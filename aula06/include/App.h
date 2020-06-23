@@ -1,0 +1,22 @@
+#ifndef APP_H
+#define APP_H
+
+#include "Diary.h"
+
+
+struct App{
+
+    Diary diary;
+    App(const string& filename);
+    int run(int argc, const char* argv[]);
+    int show_usage();
+    void add();
+    void add(const string message);
+    void list_messages();
+
+
+};
+
+
+
+#endif
