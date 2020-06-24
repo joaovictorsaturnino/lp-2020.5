@@ -12,7 +12,7 @@ App::App(const string& filename) : diary(filename){
 int App::run(int argc, char const * argv[]){
     
     if (argc == 1) {
-        return show_usage();
+        return show_usage(argv[0]);
     }
 
     string acao = argv[1];
@@ -28,7 +28,7 @@ int App::run(int argc, char const * argv[]){
     } else if (acao == "search") {
         //algo
     } else {
-        return show_usage();
+        return show_usage(argv[0]);
     }
 
     return 0;
@@ -57,7 +57,8 @@ void App::list_messages()
     }
 }
 
-int App::show_usage()
+int App::show_usage(const string &prog_name)
 {
+    cout << "Uso: "<< prog_name <<" 'add <message>' or 'list'" << endl;
     return 1;
 }
