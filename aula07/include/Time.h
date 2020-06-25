@@ -6,12 +6,17 @@
 using namespace std;
 
 struct Time {
+
+  Time();
   unsigned hora;
   unsigned minuto;
   unsigned segundo;
 
   void setFromString(const string& time); 
-  string to_string();
+  string toString();
+  string getCurrentTime();
+  string formatCurrentDate(const string &format);
+
 };
 
 

@@ -13,7 +13,10 @@ struct Date {
   unsigned ano;
 
   void setFromString(const string& date);
-  string to_string();
+  string getCurrentDate();
+  string formatCurrentDate(const string &format);
+
+  string toString();
 };
 
 

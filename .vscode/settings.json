@@ -6,6 +6,7 @@
         "iosfwd": "cpp",
         "*.tcc": "cpp",
         "istream": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "ctime": "cpp"
     }
 }
