@@ -16,5 +16,5 @@ int main(int argc, char *argv[]) {
   m2.time.hora = 8;
   m2.content = "Hello, World";
 
-  m1.comparar_datas(m2);
+  
 }

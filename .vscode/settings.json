@@ -7,6 +7,10 @@
         "*.tcc": "cpp",
         "istream": "cpp",
         "typeinfo": "cpp",
-        "ctime": "cpp"
+        "ctime": "cpp",
+        "optional": "cpp",
+        "cmath": "cpp",
+        "sstream": "cpp",
+        "string": "cpp"
     }
 }

@@ -2,7 +2,7 @@
 
 int main(int argc, char const *argv[]){
     
-    App app("diario.txt");
+    App app("diario.md");
 
     return app.run(argc, argv);
 }
