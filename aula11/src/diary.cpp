@@ -62,6 +62,12 @@ void Diary::add(const string& message){
 
     current_Message.messageExists = false;
     messages.push_back(current_Message);
+
+    for(int i = 0; i < messages.size(); i++){
+        cout << messages[i].content << endl;
+    }
+
+
 }
 
 void Diary::write(){
@@ -119,7 +125,7 @@ vector<Message> Diary::search(string message){
     
     for(int i = 0; i < messages.size(); i++){
         string cmp = messages[i].content;
-        c << endl;
+
         if(cmp.compare(message) == 0) {
             founded.content = messages[i].content;
             founded.time = messages[i].time;
