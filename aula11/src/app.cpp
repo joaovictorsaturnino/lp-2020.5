@@ -25,7 +25,7 @@ int App::run(int argc, char const * argv[]){
             add(argv[2]);
         }
     } else if (acao == "list") {
-        list_messages();
+        list();
     } else if (acao == "search") {
         search(argv[2]);
     } else {
@@ -34,6 +34,14 @@ int App::run(int argc, char const * argv[]){
 
     return 0;
 }
+
+void App::list(){
+    for (int i = 0; i < diary.messages.size(); i++){
+
+        cout << "- " << diary.messages[i].content << endl;
+    }
+}
+
 
 void App::add(){
     string message;
@@ -56,18 +64,11 @@ void App::search(string message){
         cout << "Desculpe, palavra não encontrada." << endl;
     } else {
         for(int i = 0; i < messages.size(); i++){
-            cout << "Econtrada: - " << messages[i].content << endl;
+            cout << "Encontrada: - " << messages[i].time.toString() << " " << messages[i].content << endl;
+            continue;
         }
     }
 
-}
-
-void App::list_messages()
-{
-
-    for (size_t i = 0; i < diary.messages.size(); ++i) {
-        cout << "- " << diary.messages[i].content << endl;
-    }
 }
 
 int App::show_usage(const string &prog_name)

@@ -5,62 +5,62 @@
 #include <sstream>
 #include <vector>
 using namespace std;
-Diary::Diary(const string& filename) : 
-    filename(filename)
-{   
+Diary::Diary(const string& filename) : filename(filename) {   
 
     ifstream arquivo_leitura(filename);
-    string linha;
-    string dt;
-    string hr;
-    string type;
-    string msg;
-    Message old_messages;
-    Date d;
-    Time t;
 
-    while(!arquivo_leitura.eof()){
-        
-        getline(arquivo_leitura,linha);
-        stringstream stream(linha);
-        stream >> type;
-        if(type.compare("#") == 0){
-            stream >> dt;
-        }
+    if (arquivo_leitura.fail()){
+       
+    }else{
 
-        if (type.compare("-") == 0) {
-            stream >> hr;
-            stream >> msg;
-            d.setFromString(dt);
-            t.setFromString(hr);
-            old_messages.content = msg;
-            old_messages.date = d;
-            old_messages.time = t;
-            old_messages.messageExists = true;
+        Message old_messages;
+        Date d;
+        Time t;
+        string linha;
+        string date_stream;
+        string time_stream;
+        string character;
+        string content;
 
-            messages.push_back(old_messages);
-        }
-        
-        else {
+        while(!arquivo_leitura.eof()){
             
-        }    
-        
+            getline(arquivo_leitura,linha);
+            stringstream stream(linha);
+            stream >> character;
+
+            if(character.compare("#") == 0){
+                stream >> date_stream;
+            }
+
+            if (character.compare("-") == 0) {
+                stream >> time_stream;
+                stream >> content;
+                d.setFromString(date_stream);
+                old_messages.date = d;
+                t.setFromString(time_stream);
+                old_messages.time = t;
+                old_messages.content = content;
+                
+                old_messages.messageExists = true;
+                messages.push_back(old_messages);
+            }   
+        }
     } 
 }
 
 
 void Diary::add(const string& message){
+    Message current_Message;
     
     Date d;
     d.setFromString(d.getCurrentDate());
+    current_Message.date = d;
     Time t;
     t.setFromString(t.getCurrentTime());
-    Message current_Message;
-    current_Message.messageExists = false;
-    current_Message.content = message;
-    current_Message.date = d;
     current_Message.time = t;
+    current_Message.content = message;
 
+    current_Message.messageExists = false;
     messages.push_back(current_Message);
 }
 
@@ -73,8 +73,9 @@ void Diary::write(){
 
         if(messages[i].messageExists == true){
             continue;
+
         }else{
-            
+
             int achouData = 0;
             string linha = "";
             string data = "# " + messages[i].date.toString();
@@ -91,35 +92,40 @@ void Diary::write(){
                 }       
             }
 
-                //se tem a data, só adiciona a mensagem, se não, adiciona data e mensagem
-                if(achouData){
-                    arquivo_saida << "- " << messages[i].time.toString() << " ";
-                    arquivo_saida << messages[i].content << endl;
-                }else{
-                    arquivo_saida << endl << "# " << messages[i].date.toString() << endl;
-                    arquivo_saida << "- "<< messages[i].time.toString() << " ";
-                    arquivo_saida << messages[i].content << endl;
-                }
+            //se tem a data, só adiciona a mensagem (com horário), se não, adiciona data e mensagem (com horário)
+            if(achouData){
+                arquivo_saida << "- " << messages[i].time.toString() << " ";
+                arquivo_saida << messages[i].content << endl;
+            }
+            if(!achouData){
+                arquivo_saida << endl << "# " << messages[i].date.toString() << endl;
+                arquivo_saida << "- "<< messages[i].time.toString() << " ";
+                arquivo_saida << messages[i].content << endl;
+            }
 
             cout << "Mensagem Adicionada" << endl;
-            
         }
     }
+
     arquivo_entrada.close();
     arquivo_saida.close();
 
 }
 
 vector<Message> Diary::search(string message){
+    
     vector<Message> searched_messages;
-    for(int i = 0; i < messages.size(); ++i){
-        int founded_Message = messages[i].content.find(message);
-
-        if(founded_Message < messages[i].content.npos) {
-            Message founded;
+    Message founded;
+    
+    for(int i = 0; i < messages.size(); i++){
+        string cmp = messages[i].content;
+        c << endl;
+        if(cmp.compare(message) == 0) {
             founded.content = messages[i].content;
+            founded.time = messages[i].time;
             searched_messages.push_back(founded);
         }
     }
+    cout << searched_messages.size() << endl;
     return searched_messages;
 }

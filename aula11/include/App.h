@@ -12,7 +12,7 @@ struct App{
     int show_usage(const string &prog_name);
     void add();
     void add(const string message);
-    void list_messages();
+    void list();
     void search(string message);
 
 
