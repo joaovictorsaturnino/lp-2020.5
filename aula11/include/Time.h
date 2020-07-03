@@ -18,7 +18,4 @@ struct Time {
   string formatCurrentDate(const string &format);
 
 };
-
-
-
 #endif

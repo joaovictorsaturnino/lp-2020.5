@@ -19,5 +19,4 @@ struct Diary{
     vector<Message> search(string message);
 
 };
-
 #endif

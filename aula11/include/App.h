@@ -14,10 +14,6 @@ struct App{
     void add(const string message);
     void list();
     void search(string message);
-
-
 };
-
-
 
 #endif

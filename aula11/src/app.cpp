@@ -64,8 +64,7 @@ void App::search(string message){
         cout << "Desculpe, palavra não encontrada." << endl;
     } else {
         for(int i = 0; i < messages.size(); i++){
-            cout << "Encontrada: - " << messages[i].time.toString() << " " << messages[i].content << endl;
-            continue;
+            cout << "Encontrada:"<< messages[i].date.toString() <<" - " << messages[i].time.toString() << " " << messages[i].content << endl;
         }
     }
 

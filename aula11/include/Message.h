@@ -15,5 +15,4 @@ struct Message {
 
   
 };
-
 #endif

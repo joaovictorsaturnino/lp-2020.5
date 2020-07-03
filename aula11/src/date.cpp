@@ -29,8 +29,7 @@ string Date::formatCurrentDate(const string &format) {
     return string(result);
 }
 
-string Date::getCurrentDate() 
-{
+string Date::getCurrentDate(){
     return formatCurrentDate("%d/%m/%Y");
 }
 

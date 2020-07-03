@@ -18,7 +18,4 @@ struct Date {
 
   string toString();
 };
-
-
-
 #endif

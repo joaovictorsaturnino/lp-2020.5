@@ -13,7 +13,7 @@ Diary::Diary(const string& filename) : filename(filename) {
        
     }else{
 
-        Message old_messages;
+        Message old_message;
         Date d;
         Time t;
         string linha;
@@ -36,13 +36,13 @@ Diary::Diary(const string& filename) : filename(filename) {
                 stream >> time_stream;
                 stream >> content;
                 d.setFromString(date_stream);
-                old_messages.date = d;
+                old_message.date = d;
                 t.setFromString(time_stream);
-                old_messages.time = t;
-                old_messages.content = content;
+                old_message.time = t;
+                old_message.content = content;
                 
-                old_messages.messageExists = true;
-                messages.push_back(old_messages);
+                old_message.messageExists = true;
+                messages.push_back(old_message);
             }   
         }
     } 
@@ -63,12 +63,8 @@ void Diary::add(const string& message){
     current_Message.messageExists = false;
     messages.push_back(current_Message);
 
-    for(int i = 0; i < messages.size(); i++){
-        cout << messages[i].content << endl;
-    }
-
-
 }
+
 
 void Diary::write(){
 
@@ -127,11 +123,12 @@ vector<Message> Diary::search(string message){
         string cmp = messages[i].content;
 
         if(cmp.compare(message) == 0) {
+            founded.date = messages[i].date;
             founded.content = messages[i].content;
             founded.time = messages[i].time;
             searched_messages.push_back(founded);
         }
     }
-    cout << searched_messages.size() << endl;
+    
     return searched_messages;
 }
