@@ -23,7 +23,7 @@ int main(int argc, char const *argv[]){
     int opc = 3;
     while(opc != 0){
     
-        cout << "| Bem vindo ao seu banco, "<< c.titular << ". Seu saldo atual é R$: " << c.saldo << endl;
+        cout << "| Bem vindo ao seu banco, "<< c.titular.nome << ". Seu saldo atual é R$: " << c.saldo << endl;
         cout << "| Que operação deseja realizar?" << endl;
         cout << "| 1 - Saque" << endl;
         cout << "| 2 - Depósito" << endl;
