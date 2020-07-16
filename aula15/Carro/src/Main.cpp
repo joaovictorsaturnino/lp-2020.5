@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    Carro c;
+    Carro c("Verde");
     c.tipo = "Sedan";
     c.numPortas = 4;
     c.placa = "XYZ-0102";

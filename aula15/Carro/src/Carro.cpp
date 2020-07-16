@@ -2,12 +2,12 @@
 
 Carro::Carro(string cor){
     this->cor = cor;
-    this->qtdCarros += qtdCarros;
+    //this->qtdCarros += 1;
 }
 
 Carro::Carro(){
     this->cor = "Branco";
-    this->qtdCarros += qtdCarros;
+    //this->qtdCarros += 1;
 }
 
 void Carro::acelera(int velocidade){

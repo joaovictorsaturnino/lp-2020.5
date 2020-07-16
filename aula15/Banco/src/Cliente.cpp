@@ -6,4 +6,5 @@ Cliente::Cliente(){
     this->qtdClientes += 1;
 }
 Cliente::~Cliente(){
+
 }
